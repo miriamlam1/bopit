@@ -1,0 +1,1 @@
+"./A2.obj" "./A3.obj" "./A4.obj" "./A5.obj" "./A7.obj" "./A8.obj" "./A9.obj" "./LCD.obj" "./LEDs.obj" "./P1.obj" "./P3.obj" "./main.obj" "./provided.obj" "./startup_msp432p401r_ccs.obj" "./system_msp432p401r.obj" "../msp432p401r.cmd" -llibc.a 
