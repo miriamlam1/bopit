@@ -21,6 +21,7 @@ void main(void){
     keypad_init();
     LCD_init();
     init_button();
+    init_button_external();
     DAC_init();
 
     __enable_irq();

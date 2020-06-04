@@ -10,21 +10,19 @@
 #include <string.h>
 
 char score = 0; //starting score is zero
-char* tasks[] = {"PRESS BUTTON 1.1", "PRESS BUTTON 1.4", "SCREAM", "PRESS KEYPAD"};
+char* tasks[] = {"PRESS BTN 1.1", "PRESS BTN 1.4", "SCREAM", "PRESS KEYPAD", "PRESS OTHER BTN"};
 
 void print_task(uint16_t rando, uint16_t keypad_rand){
     uint16_t task = rando % CHOICES;
-    Clear_LCD();
+    line_LCD(1);
     Write_word_LCD("TASK: ");
     Write_word_LCD(tasks[task]);
+    printf("task: %s\n", tasks[task]);
     if (task == KEYPAD){
         char button_no[2];
         sprintf(button_no, "%d", keypad_rand);
         Write_word_LCD(button_no);
             printf("%d\n", keypad_rand);
-    } else {
-    Write_word_LCD(tasks[task]);
-        printf("task: %s\n", tasks[task]);
     }
 }
 

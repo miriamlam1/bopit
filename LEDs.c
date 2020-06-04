@@ -6,6 +6,7 @@
  * P2.1 - GREEN LED
  * P2.2 - BLUE LED
  */
+
 #include "msp.h"
 #include "A2.h"
 #include <stdio.h>
