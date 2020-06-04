@@ -32,6 +32,8 @@ void main(void){
             print_score();
         } else {
             game_over();
+            while(getKeyVal() == NO_BUTTON_PRESS) // PRESS ANY BUTTON TO CONTINUE
+                when_lost();
         }
     }
 

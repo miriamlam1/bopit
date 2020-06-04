@@ -8,7 +8,7 @@
 #ifndef P3_H_
 #define P3_H_
 
-#define CHOICES 2
+#define CHOICES 4
 #define STARTING_TIME 10000
 #define BUTTON11 0
 #define KEYPAD 3
@@ -17,5 +17,6 @@
 
 void init_button();
 uint8_t random_task(uint16_t rand);
+uint8_t game_keypad(uint16_t button);
 
 #endif /* P3_H_ */

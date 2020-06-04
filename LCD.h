@@ -7,6 +7,6 @@
 
 void print_score();
 void game_over();
-void print_task(uint16_t rando);
+void print_task(uint16_t rando, uint16_t keypad_rand);
 
 #endif /* LCD_H_ */

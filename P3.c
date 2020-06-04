@@ -10,6 +10,7 @@
 #include "LEDs.h"
 #include "LCD.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 uint8_t win;
 uint16_t timer_threshold = STARTING_TIME;
@@ -26,29 +27,27 @@ void init_button(){
     NVIC->ISER[1] = 1 <<((PORT1_IRQn)&31);
 }
 
-uint8_t random_task(uint16_t rand){
+uint8_t random_task(uint16_t rando){
     win = 0;
+    uint16_t keypad_rand = 0;
 
-    switch(rand % CHOICES){
+    switch(rando % CHOICES){
         case BUTTON11:
-            //printf("BUTTON 1.1\n");
             P1->IE |= BIT1;
             break;
         case KEYPAD:
-            //printf("KEYPAD\n");
-            break;
+            keypad_rand = rand() % 12;
+            return game_keypad(keypad_rand);
         case MICROPHONE:
-            //printf("MICROPHONE\n");
+            win = 1;
             break;
         case BUTTON14:
-            //printf("BUTTON 1.4\n");
             P1->IE |= BIT4;
             break;
     }
 
-    print_task(rand);
-
     green_led_off();
+    print_task(rando,keypad_rand);
 
     while(timer_count < timer_threshold){
         if (win == 1){
@@ -65,10 +64,17 @@ uint8_t random_task(uint16_t rand){
     return 0;
 }
 
-void game_keypad(uint16_t button){
-    if (getKeyVal() == button){
-        win = 1;
-    }
+uint8_t game_keypad(uint16_t button){
+    print_task(KEYPAD,button);
+    while(timer_count < timer_threshold){
+        if (getKeyVal() == (button+0x30)){
+            timer_threshold = (timer_threshold*100)/110; // make 10% faster each time
+            timer_count = 0;
+            return 1;
+        }
+        sendto_DAC(4095 - (1200 * timer_count / timer_threshold));
+        }
+    return 0;
 }
 
 void PORT1_IRQHandler(void){

@@ -27,6 +27,7 @@ P3.obj: ../LEDs.h
 P3.obj: ../LCD.h
 P3.obj: C:/ti/ccs1000/ccs/tools/compiler/ti-cgt-arm_20.2.0.LTS/include/stdio.h
 P3.obj: C:/ti/ccs1000/ccs/tools/compiler/ti-cgt-arm_20.2.0.LTS/include/stdarg.h
+P3.obj: C:/ti/ccs1000/ccs/tools/compiler/ti-cgt-arm_20.2.0.LTS/include/stdlib.h
 
 ../P3.c: 
 ../A7.h: 
@@ -55,3 +56,4 @@ C:/ti/ccs1000/ccs/ccs_base/arm/include/system_msp432p401r.h:
 ../LCD.h: 
 C:/ti/ccs1000/ccs/tools/compiler/ti-cgt-arm_20.2.0.LTS/include/stdio.h: 
 C:/ti/ccs1000/ccs/tools/compiler/ti-cgt-arm_20.2.0.LTS/include/stdarg.h: 
+C:/ti/ccs1000/ccs/tools/compiler/ti-cgt-arm_20.2.0.LTS/include/stdlib.h: 
