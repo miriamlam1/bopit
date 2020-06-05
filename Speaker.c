@@ -4,18 +4,20 @@
 
 #include "msp.h"
 #include "A9.h"
-#include  "Speaker.h"
+#include "Speaker.h"
+#include <stdio.h>
 
 uint16_t microphone_sensor(){
-    uint32_t data = get_conversion_results();
-    uint16_t volts = voltage_conversion(data);
-    uint16_t flag = 0; //init to zero to in indicate no noise
-
-    if(data >= THRESHOLD){
-        flag = 1;
-    }else{
-        flag = 0;
-    }
-
-    return flag;
+    uint16_t data = 0;
+    if(get_global_flag())
+            {
+                data = get_conversion_results();
+                //printf("%d\n", data);
+                set_global_flag(0);
+                ADC14 -> CTL0 |= ADC14_CTL0_SC; //initiate a new sample for the ADC14
+                ADC14 -> IER0 |= ADC14_IER0_IE0;
+            }
+    if (data>= THRESHOLD)
+        return 1;
+    return 0;
 }

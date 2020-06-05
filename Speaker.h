@@ -5,7 +5,7 @@
 #ifndef SPEAKER_H_
 #define SPEAKER_H_
 
-#define THRESHOLD 1.5
+#define THRESHOLD 12400
 
 uint16_t microphone_sensor();
 

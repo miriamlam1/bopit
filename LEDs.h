@@ -1,10 +1,3 @@
-/*
- * LEDs.h
- *
- *  Created on: May 30, 2020
- *      Author: malna
- */
-
 #ifndef LEDS_H_
 #define LEDS_H_
 
