@@ -16,6 +16,7 @@ void main(void){
     WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;     // stop watchdog timer
 
     set_DCO(FREQ_24_MHz);
+
     timer_A_init();
     ADC_init();
     keypad_init();
@@ -33,8 +34,9 @@ void main(void){
             print_score();
         } else {
             game_over();
-            while(getKeyVal() == NO_BUTTON_PRESS) // PRESS ANY BUTTON TO CONTINUE
+            while(getKeyVal() == BUTTON_POUND) // PRESS POUND TO CONTINUE
                 when_lost();
+            Clear_LCD();
         }
     }
 

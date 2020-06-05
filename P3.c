@@ -34,7 +34,7 @@ void init_button_external(){
     P3->IFG &= ~BIT6;
     P3->IE |= BIT6;
     P3->REN |= BIT6;
-    P3->OUT |= BIT6;
+    P3->OUT &= ~BIT6;
     NVIC->ISER[1] = 1 <<((PORT3_IRQn)&31);
 }
 
@@ -93,7 +93,7 @@ uint8_t random_task(uint16_t rando){
 void PORT1_IRQHandler(void){
 
     if(P1->IFG & (BIT1 | BIT4)){
-        printf("WIN\n");
+        //1printf("WIN\n");
         win = 1;
         // button press
     }
@@ -102,11 +102,8 @@ void PORT1_IRQHandler(void){
 }
 
 void PORT3_IRQHandler(void){
-    if(P3->IFG & BIT6){
-        printf("button3 pressed\n");
-        win = 1;
-        // button press
-    }
+    printf("%d\n", rand());
+    win = 1;
     P3->IFG &= ~BIT6;
     P3->IE &= ~BIT6; // disable interrupts
 }

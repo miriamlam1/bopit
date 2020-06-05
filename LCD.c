@@ -17,12 +17,12 @@ void print_task(uint16_t rando, uint16_t keypad_rand){
     line_LCD(1);
     Write_word_LCD("TASK: ");
     Write_word_LCD(tasks[task]);
-    printf("task: %s\n", tasks[task]);
+   // printf("task: %s\n", tasks[task]);
     if (task == KEYPAD){
         char button_no[2];
         sprintf(button_no, "%d", keypad_rand);
         Write_word_LCD(button_no);
-            printf("%d\n", keypad_rand);
+          //  printf("%d\n", keypad_rand);
     }
 }
 
@@ -35,17 +35,16 @@ void game_over(){
     sprintf(scoreword, "%d", score);
         Write_word_LCD(scoreword); //write score to LCD
         score = 0;
-        printf("LOSS\n");
+       // printf("LOSS\n");
 }
 
 void print_score(){
+    score += 1; //everytime func gets called they pass a level
     line_LCD(2); //move to the second line of LCD
     Write_word_LCD("SCORE: ");
-        printf("\n score: ");
+     //   printf("\n score: ");
     char scoreword[4];
     sprintf(scoreword, "%d", score);
     Write_word_LCD(scoreword); //write score to LCD
-        printf("%d\n", score);
-
-    score += 1; //everytime func gets called they pass a level
+     //   printf("%d\n", score);
 }
