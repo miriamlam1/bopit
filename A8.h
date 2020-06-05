@@ -16,5 +16,4 @@ uint8_t get_receive_flag();
 void EUSCIA0_IRQHandler();
 uint16_t array_to_int(char data_array[]);
 
-
 #endif /* A8_H_ */

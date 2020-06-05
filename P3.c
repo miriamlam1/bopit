@@ -37,9 +37,10 @@ void init_button_external(){
 }
 
 uint8_t random_task(uint16_t rando){
+    //rando = 2;
     win = 0; // win per task init to 0
     uint16_t keypad_rand = 0;
-    uint16_t current_task = 2;//rando % CHOICES; // selects task based on rand
+    uint16_t current_task = rando % CHOICES; // selects task based on rand
 
     switch(current_task){
         case BUTTON11:
@@ -59,8 +60,8 @@ uint8_t random_task(uint16_t rando){
 
     print_task(rando,keypad_rand);
     green_led_off();
-
-    while(timer_count < timer_threshold){ // iterate until times up
+    timer_count = 0;
+    while(timer_count <= timer_threshold){ // iterate until times up
         if (current_task == KEYPAD){
             win = 0;
             if (getKeyVal() == (keypad_rand + BUTTON0)) // check keypad val
